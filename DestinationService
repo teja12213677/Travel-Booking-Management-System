@@ -1,0 +1,32 @@
+package com.destination;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DestinationService {
+	private List<Destination> destinations=new ArrayList<>();
+	
+	public DestinationService() {
+		destinations.add(new Destination(1,"Delhi",5400));
+		destinations.add(new Destination(2,"Kashmir",7200));
+		destinations.add(new Destination(3,"Manali",3700));
+		destinations.add(new Destination(4,"Amritsar",1200));
+		destinations.add(new Destination(5,"Hyderabad",6500));
+		destinations.add(new Destination(6,"Mumbai",5000));
+		destinations.add(new Destination(7,"Visakapatnam",4000));
+		destinations.add(new Destination(8,"Benguluru",6000));
+	}
+	public List<Destination>getAllDestinations(){
+		return destinations;
+	}
+	
+	public Destination getDestinationById(int id) {
+		return destinations.stream()
+				.filter(dest->dest.getUserId()==id)
+				.findFirst()
+				.orElseThrow(()->new IllegalArgumentException("Destination not Found!"));
+				
+				
+	}
+	
+}
